@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Minesweeper.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Minesweeper.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

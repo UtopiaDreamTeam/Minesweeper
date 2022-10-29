@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Minesweeper.WinUI.Views.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Minesweeper.Core.Models"
+    xmlns:converters="using:Minesweeper.WinUI.Converters" 
+    xmlns:viewmodels="using:Minesweeper.Core.ViewModels"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:ic="using:Microsoft.Xaml.Interactions.Core" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:GamePageViewModel}"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converters:ValueTupleToMargin x:Key="ValueTupleToMargin"/>
+        <converters:CellDisplayToObject x:Key="CellDisplayToObject"/>
+        <converters:GameToObject x:Key="GameToObject"/>
+        <converters:GameDifficultyToBoolean x:Key="GameDifficultyToBoolean"/>
+        <DataTemplate x:Key="ButtonTemplate" x:DataType="models:Cell">
+            <Button Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    IsEnabled="{Binding IsEnabled}"
+                    Command="{Binding LeftClickCommand}"
+                    Margin="{Binding Margin,Converter={StaticResource ValueTupleToMargin}}">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{StaticResource AccentFillColorDisabled}"/>
+                </Button.Resources>
+                <Button.Content>
+                    <Viewbox Child="{Binding Display,Converter={StaticResource CellDisplayToObject}}"/>
+                </Button.Content>
+                <i:Interaction.Behaviors>
+                    <ic:EventTriggerBehavior EventName="RightTapped">
+                        <ic:EventTriggerBehavior.Actions>
+                            <ic:InvokeCommandAction Command="{Binding RightClickCommand}"/>
+                        </ic:EventTriggerBehavior.Actions>
+                    </ic:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+            </Button>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid SizeChanged="Grid_SizeChanged">
+        <MenuBar VerticalAlignment="Top" Background="{StaticResource AccentAcrylicBackgroundFillColorBaseBrush}">
+            <MenuBarItem Title="Game">
+                <MenuFlyoutItem Text="New" Command="{Binding RestartCommand}"/>
+                <MenuFlyoutSeparator/>
+                <RadioMenuFlyoutItem Text="Beginner" GroupName="Difficulty" Command="{Binding GoEasyCommand}" 
+                                     IsChecked="{Binding Settings.GameDifficulty,Converter={StaticResource GameDifficultyToBoolean},ConverterParameter=0}"/>
+                <RadioMenuFlyoutItem Text="Intermerdiate" GroupName="Difficulty" Command="{Binding GoMeduimCommand}"
+                                     IsChecked="{Binding Settings.GameDifficulty,Converter={StaticResource GameDifficultyToBoolean},ConverterParameter=1}"/>
+                <RadioMenuFlyoutItem Text="Expert" GroupName="Difficulty" Command="{Binding GoHardCommand}"
+                                     IsChecked="{Binding Settings.GameDifficulty,Converter={StaticResource GameDifficultyToBoolean},ConverterParameter=2}"/>
+                <RadioMenuFlyoutItem Text="Custom" GroupName="Difficulty" Click="CustomSettings_Click"
+                                     IsChecked="{Binding Settings.GameDifficulty,Converter={StaticResource GameDifficultyToBoolean},ConverterParameter=3}"/>
+                <MenuFlyoutSeparator/>
+                <ToggleMenuFlyoutItem Text="Marks (?)" IsChecked="{Binding Settings.Marks,Mode=TwoWay}"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem Text="Best times" Click="BestTime_Click"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem Text="Exit" Click="CloseGame_Click"/>
+            </MenuBarItem>
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="Help" Click="Help_Click"/>
+                <MenuFlyoutSeparator/>
+                <MenuFlyoutItem Text="About" Click="About_Click"/>
+            </MenuBarItem>
+        </MenuBar>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Margin="45">
+            <TextBox Text="{Binding FlagsUsed}" Height="10"
+                IsReadOnly="True"/>
+            <Button Content="{Binding GameStat,Converter={StaticResource GameToObject}}" 
+                Command="{Binding RestartCommand}" Margin="10,0,10,0"/>
+            <TextBox Text="{Binding Time}" Height="10"
+                IsReadOnly="True"/>
+        </StackPanel>
+        <Grid x:Name="grid" Margin="0,90,0,0">
+            <ItemsControl
+              HorizontalAlignment="Center"
+              VerticalAlignment="Stretch"
+              ItemsSource="{Binding Cells}"
+              ItemTemplate="{StaticResource ButtonTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</Page>
