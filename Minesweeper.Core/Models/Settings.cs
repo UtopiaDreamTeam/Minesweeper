@@ -8,7 +8,8 @@ namespace Minesweeper.Core.Models
 {
     public class Settings : ObservableObject
     {
-        private static string FilePath => Path.Join(SpecialDirectories.Desktop, "settings.mine");
+        private static string FilePath => Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+            , "settings.mine");
 
         [JsonIgnore]
         private bool marks = true;
