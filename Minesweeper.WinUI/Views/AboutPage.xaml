@@ -8,7 +8,7 @@
     <TextBlock >
         Minesweeper WIN98 Remake for WIN10/11 (WINUI)
         <LineBreak/>
-        <Hyperlink NavigateUri="https://github.com">Project link</Hyperlink>
+        <Hyperlink NavigateUri="https://github.com/UtopiaDreamTeam/Minesweeper">Project link</Hyperlink>
         <LineBreak/>
         Made by Utopia
     </TextBlock>
