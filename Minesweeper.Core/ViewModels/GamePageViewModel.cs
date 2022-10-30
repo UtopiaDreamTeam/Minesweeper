@@ -73,7 +73,7 @@ namespace Minesweeper.Core.ViewModels
             cells = new Cell[Settings.GameDifficulty.Columns * Settings.GameDifficulty.Rows];
             GameStat = GameStat.Playing;
             solved = 0;
-            FlagsUsed = Settings.GameDifficulty.BoombsCount;
+            FlagsUsed = Settings.GameDifficulty.BombsCount;
             flagsRight = 0;
             for (int i = 0; i < Settings.GameDifficulty.Rows*Settings.GameDifficulty.Columns; i++)
             {
@@ -85,7 +85,7 @@ namespace Minesweeper.Core.ViewModels
         private void GenerateBoombs()
         {
             bombs.Clear();
-            for (int i = 0; i < Settings.GameDifficulty.BoombsCount; i++)
+            for (int i = 0; i < Settings.GameDifficulty.BombsCount; i++)
             {
                 GenerateBoomb();
             }
@@ -181,7 +181,7 @@ namespace Minesweeper.Core.ViewModels
         }
         private async Task CheckForWin()
         {
-            if (solved + Settings.GameDifficulty.BoombsCount == Settings.GameDifficulty.Columns * Settings.GameDifficulty.Rows || flagsRight == Settings.GameDifficulty.BoombsCount)
+            if (solved + Settings.GameDifficulty.BombsCount == Settings.GameDifficulty.Columns * Settings.GameDifficulty.Rows || flagsRight == Settings.GameDifficulty.BombsCount)
             {
                 GameStat= GameStat.Won;
                 stopwatch.Stop();

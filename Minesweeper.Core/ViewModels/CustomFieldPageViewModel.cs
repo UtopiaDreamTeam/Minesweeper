@@ -8,7 +8,7 @@ namespace Minesweeper.Core.ViewModels
         public CustomFieldPageViewModel(GamePageViewModel gamePageView)
         {
             var currentDiffculty = gamePageView.Settings.GameDifficulty;
-            GameDifficulty=new GameDifficulty(currentDiffculty.Rows,currentDiffculty.Columns,currentDiffculty.BoombsCount);
+            GameDifficulty=new GameDifficulty(currentDiffculty.Rows,currentDiffculty.Columns,currentDiffculty.BombsCount);
         }
     }
 }

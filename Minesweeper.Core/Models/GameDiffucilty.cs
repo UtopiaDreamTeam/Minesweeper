@@ -4,7 +4,7 @@
     {
         private int rows;
         private int columns;
-        private int boombsCount;
+        private int bombsCount;
 
         public enum Difficulty
         {
@@ -20,23 +20,23 @@
             get => rows;
             set => rows=Math.Max(8,Math.Min(24,value));
         }
-        public int BoombsCount { 
-            get => boombsCount;
-            set => boombsCount = Math.Min((Rows-1)*(Columns-1), Math.Max(10, value)); 
+        public int BombsCount { 
+            get => bombsCount;
+            set => bombsCount = Math.Min((Rows-1)*(Columns-1), Math.Max(10, value)); 
         }
 
         public GameDifficulty(int rows, int columns, int boombsCount)
         {
             Columns = columns;
             Rows = rows;
-            BoombsCount = boombsCount;
+            BombsCount = boombsCount;
             DifficultyType = Difficulty.Custom;
         }
         private GameDifficulty(int rows, int columns, int boombsCount, Difficulty difficulty)
         {
             Columns = columns;
             Rows = rows;
-            BoombsCount = boombsCount;
+            BombsCount = boombsCount;
             DifficultyType = difficulty;
         }
         public static GameDifficulty EasyDifficulty => new GameDifficulty(8, 8, 10, Difficulty.Easy);
