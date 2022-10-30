@@ -22,7 +22,7 @@
         }
         public int BoombsCount { 
             get => boombsCount;
-            set => boombsCount = Math.Min(Rows*Columns, Math.Max(10, value)); 
+            set => boombsCount = Math.Min((Rows-1)*(Columns-1), Math.Max(10, value)); 
         }
 
         public GameDifficulty(int rows, int columns, int boombsCount)
