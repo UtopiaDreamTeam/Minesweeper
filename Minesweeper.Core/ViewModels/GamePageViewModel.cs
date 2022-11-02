@@ -34,7 +34,12 @@ namespace Minesweeper.Core.ViewModels
             get => time; 
             set => SetProperty(ref time, Math.Min(999,value)); 
         }
-
+        private bool rightClick;
+        public bool RightClick
+        {
+            get => rightClick;
+            set => SetProperty(ref rightClick, value);
+        }
         public Settings Settings { get; }
 
         private int solved;
@@ -100,6 +105,11 @@ namespace Minesweeper.Core.ViewModels
 
         private async void OnLeftClick(int index)
         {
+            if (rightClick)
+            {
+                OnRightClick(index);
+                return;
+            }
             if (GameStat!=GameStat.Playing)
                 return;
             if (!stopwatch.IsRunning)

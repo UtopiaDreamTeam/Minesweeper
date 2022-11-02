@@ -5,12 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:Minesweeper.Core.Models"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:not_win="http://uno.ui/not_win"
     xmlns:converters="using:Minesweeper.Uno.Converters" 
     xmlns:viewmodels="using:Minesweeper.Core.ViewModels"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core" 
     d:DataContext="{d:DesignInstance Type=viewmodels:GamePageViewModel}"
-    mc:Ignorable="d"
+    mc:Ignorable="d not_win"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <converters:ValueTupleToMargin x:Key="ValueTupleToMargin"/>
@@ -18,7 +20,7 @@
         <converters:GameToObject x:Key="GameToObject"/>
         <converters:GameDifficultyToBoolean x:Key="GameDifficultyToBoolean"/>
         <DataTemplate x:Key="ButtonTemplate" x:DataType="models:Cell">
-            <Button Width="{Binding Width}"
+            <not_win:Button Width="{Binding Width}"
                     Height="{Binding Height}"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
@@ -31,14 +33,28 @@
                 <Button.Content>
                     <Viewbox Child="{Binding Display,Converter={StaticResource CellDisplayToObject}}"/>
                 </Button.Content>
-                <!--<i:Interaction.Behaviors>
+            </not_win:Button>
+            <win:Button Width="{Binding Width}"
+                    Height="{Binding Height}"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    IsEnabled="{Binding IsEnabled}"
+                    Command="{Binding LeftClickCommand}"
+                    Margin="{Binding Margin,Converter={StaticResource ValueTupleToMargin}}">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{StaticResource AccentFillColorDisabled}"/>
+                </Button.Resources>
+                <Button.Content>
+                    <Viewbox Child="{Binding Display,Converter={StaticResource CellDisplayToObject}}"/>
+                </Button.Content>
+                <i:Interaction.Behaviors>
                     <ic:EventTriggerBehavior EventName="RightTapped">
                         <ic:EventTriggerBehavior.Actions>
                             <ic:InvokeCommandAction Command="{Binding RightClickCommand}"/>
                         </ic:EventTriggerBehavior.Actions>
                     </ic:EventTriggerBehavior>
-                </i:Interaction.Behaviors>-->
-            </Button>
+                </i:Interaction.Behaviors>
+            </win:Button>
         </DataTemplate>
     </Page.Resources>
 
@@ -69,6 +85,7 @@
             </MenuBarItem>
         </MenuBar>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Margin="45">
+            <not_win:ToggleButton Content="Use flag" IsChecked="{Binding RightClick,Mode=TwoWay}"/>
             <TextBox Text="{Binding FlagsUsed}" Height="10"
                 IsReadOnly="True"/>
             <Button Content="{Binding GameStat,Converter={StaticResource GameToObject}}" 
