@@ -7,37 +7,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Pivot SelectedIndex="0" Height="350">
+    <Pivot SelectedIndex="0" Height="350" >
         <PivotItem Header="Objectif">
-            <TextBlock>
-                The object of Minesweeper is to find all the mines as quickly as possible without uncovering any of them.
+            <TextBlock  xml:space="preserve" TextWrapping="Wrap">
+The object of Minesweeper is to find all the 
+mines as quickly as possible without 
+uncovering any of them.
             </TextBlock>
         </PivotItem>
         <PivotItem Header="How To Play?">
-            <TextBlock xml:space="preserve" TextWrapping="Wrap">
+            <TextBlock xml:space="preserve" >
 To play Minesweeper 
     1. On the Game menu, click New. 
-    2.To start the timer, click any square on the playing field. 
+    2.To start the timer, click any square on the 
+    playing field. 
 Notes: 
--The game area consists of the playing field, a mine counter, and a timer. 
--You can uncover a square by clicking it. If you uncover a mine, you lose the game. 
--If a number appears on a square, it indicates how many mines are in the eight squares 
+-The game area consists of the playing 
+field, a mine counter, and a timer. 
+-You can uncover a square by clicking it. If you 
+uncover a mine, you lose the game. 
+-If a number appears on a square, it indicates 
+how many mines are in the eight squares 
 that surround the numbered one. 
--To mark a square you suspect contains a mine, right-click it.
+-To mark a square you suspect contains a mine, 
+right-click it.
             </TextBlock>
-        </PivotItem>        
-        <PivotItem Header="Tips">
-            <TextBlock xml:space="preserve" TextWrapping="Wrap">
--If you are uncertain about a square, right-click it twice to mark it with a question mark (?). 
-Later, you can either mark the square as a mine or uncover it by right-clicking again once or twice. 
+        </PivotItem>
+        <PivotItem Header="Tips" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollMode="Enabled" >
+            <ScrollViewer  Height="300" Width="1000" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollMode="Enabled">
+                <TextBlock xml:space="preserve" TextWrapping="Wrap" Height="300" Width="1000" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.IsHorizontalRailEnabled="True" ScrollViewer.HorizontalScrollMode="Enabled">
+-If you are uncertain about a square, right-click 
+it twice to mark it with a question mark (?). 
+Later, you can either mark the square as a mine 
+or uncover it by right-clicking again once or 
+twice. 
 
--When you have marked all mines around a numbered square, you can quickly uncover all empty squares around 
-it by clicking that square with both mouse buttons. 
-If not all mines touching the square are marked, the uncovered touching squares will flash. 
+-When you have marked all mines around a 
+numbered square, you can quickly uncover all empty
+squares around it by clicking that square 
+with both mouse buttons. 
+If not all mines touching the square are marked, 
+the uncovered touching squares will flash. 
 
--Look for common patterns in numbers, which often indicate a corresponding pattern of mines. 
-For example, the pattern 2-3-2 at the edge of a group of uncovered squares indicates a row of three mines next to the three numbers.
-            </TextBlock>
+-Look for common patterns in numbers, which often 
+indicate a corresponding pattern of mines. 
+For example, the pattern 2-3-2 at the edge of a group of uncovered 
+squares indicates a row of three mines next to the three numbers.
+                </TextBlock>
+            </ScrollViewer>
         </PivotItem>
     </Pivot>
 </UserControl>
