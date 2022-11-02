@@ -1,3 +1,4 @@
 # Minesweeper
-Minesweeper 98 Clone.
-Created with C# WINUI 3.
+Cross-platform, Open source Minesweeper 98 Clone.
+
+Made with WinUI3(for windows) and UnoPlatform (for windows+other platforms).
