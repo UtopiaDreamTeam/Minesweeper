@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Minesweeper.Uno.Windows": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

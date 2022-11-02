@@ -1,0 +1,15 @@
+﻿<UserControl
+    x:Class="Minesweeper.Uno.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <TextBlock >
+        Minesweeper WIN98 Remake for WIN10/11 (WINUI)
+        <LineBreak/>
+        <Hyperlink NavigateUri="https://github.com/UtopiaDreamTeam/Minesweeper">Project link</Hyperlink>
+        <LineBreak/>
+        Made by Utopia
+    </TextBlock>
+</UserControl>

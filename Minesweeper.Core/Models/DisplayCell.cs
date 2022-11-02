@@ -1,4 +1,4 @@
-﻿namespace Minesweeper.WinUI.Models
+﻿namespace Minesweeper.Core.Models
 {
     public struct CellDisplay
     {

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Minesweeper.WinUI.Models;
+using Minesweeper.Core.Models;
 
 namespace Minesweeper.Core.Models
 {

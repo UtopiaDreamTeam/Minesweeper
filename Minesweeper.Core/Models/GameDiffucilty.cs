@@ -39,6 +39,10 @@
             BombsCount = boombsCount;
             DifficultyType = difficulty;
         }
+        public GameDifficulty()
+        {
+
+        }
         public static GameDifficulty EasyDifficulty => new GameDifficulty(8, 8, 10, Difficulty.Easy);
         public static GameDifficulty MeduimDifficulty => new GameDifficulty(16, 16, 40, Difficulty.Meduim);
         public static GameDifficulty HardDifficulty => new GameDifficulty(16, 30, 99, Difficulty.Hard);

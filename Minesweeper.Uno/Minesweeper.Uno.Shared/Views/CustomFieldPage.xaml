@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Minesweeper.Uno.Views.CustomFieldPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Minesweeper.Uno.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:viewmodels="using:Minesweeper.Core.ViewModels" 
+    d:DataContext="{d:DesignInstance Type=viewmodels:CustomFieldPageViewModel}"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Height="150" Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="# of rows" Margin="0,5,0,0"/>
+            <TextBox Text="{Binding GameDifficulty.Rows,Mode=TwoWay}" Margin="10,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="# of columns" Margin="0,5,0,0"/>
+            <TextBox Text="{Binding GameDifficulty.Columns,Mode=TwoWay}" Margin="10,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="# of boombs" Margin="0,5,0,0"/>
+            <TextBox Text="{Binding GameDifficulty.BoombsCount,Mode=TwoWay}" Margin="10,0,0,0"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using Minesweeper.Core.Helpers;
 using Minesweeper.Core.Interfaces;
 using Minesweeper.Core.Models;
-using Minesweeper.WinUI.Models;
 using System.Diagnostics;
 
 namespace Minesweeper.Core.ViewModels
