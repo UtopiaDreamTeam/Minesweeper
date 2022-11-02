@@ -10,6 +10,13 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+	<WindowsPackageType>None</WindowsPackageType>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Never</AppxBundle>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Views\AboutPage.xaml" />
@@ -50,6 +57,14 @@
     <ProjectReference Include="..\Minesweeper.Core\Minesweeper.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\ScorePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -62,11 +77,15 @@
   <ItemGroup>
     <Page Update="Views\HelpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>WinUI</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <XamlRuntime>WinUI</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

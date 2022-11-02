@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
-using Minesweeper.WinUI.Models;
+using Minesweeper.Core.Models;
 using System;
 
 namespace Minesweeper.WinUI.Converters
@@ -16,7 +16,7 @@ namespace Minesweeper.WinUI.Converters
                 DisplayType.Flag => new SymbolIcon(Symbol.Flag),
                 DisplayType.Bomb => new SymbolIcon(Symbol.Emoji),
                 DisplayType.Unknown => new SymbolIcon(Symbol.Help),
-                DisplayType.Wrong => new SymbolIcon(Symbol.ClosePane),
+                DisplayType.Wrong => new SymbolIcon(Symbol.Clear),
                 _ => null,
             };
         }

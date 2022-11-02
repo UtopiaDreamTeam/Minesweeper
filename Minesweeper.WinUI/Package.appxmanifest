@@ -9,7 +9,7 @@
   <Identity
     Name="d7b6f03f-14df-4085-9cc0-0a9ea6d56b22"
     Publisher="CN=beyou"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <Properties>
     <DisplayName>Minesweeper.WinUI</DisplayName>
